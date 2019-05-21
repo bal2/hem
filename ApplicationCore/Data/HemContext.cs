@@ -19,6 +19,12 @@ namespace HADU.hem.ApplicationCore.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Event>(ConfigureEvent);
+            builder.Entity<Payment>(ConfigurePayment);
+            builder.Entity<Seatmap>(ConfigureSeatmap);
+            builder.Entity<Ticket>(ConfigureTicket);
+            builder.Entity<TicketType>(ConfigureTicketType);
+            builder.Entity<Tile>(ConfigureTile);
+            builder.Entity<User>(ConfigureUser);
         }
 
         private void ConfigureEvent(EntityTypeBuilder<Event> builder)
