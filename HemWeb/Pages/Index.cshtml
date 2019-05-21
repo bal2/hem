@@ -1,11 +1,11 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Hovedside";
 }
 
-<div class="text-center">
-    <h1 class="display-4">HADU Event management system</h1>
+<div>
+    <h1 class="title">HADU Event management system</h1>
     <ul>
         @foreach (var evt in Model.events)
         {
