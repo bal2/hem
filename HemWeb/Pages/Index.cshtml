@@ -9,7 +9,7 @@
     <ul>
         @foreach (var evt in Model.events)
         {
-            <li>@evt.Name</li>
+            <li><a asp-page="./Events/Index" asp-route-id="@evt.EventId">@evt.Name</a></li>
         }
     </ul>
 </div>

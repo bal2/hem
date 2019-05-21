@@ -24,9 +24,31 @@ namespace HADU.hem.ApplicationCore.Services
                 .Events
                 .Select(e => new EventDTO()
                 {
+                    EventId = e.EventId,
                     Name = e.Name
                 })
                 .ToListAsync();
+        }
+
+        public async Task<EventDetailsDTO> GetEventAsync(long id)
+        {
+            return await _dbContext
+                .Events
+                .Where(e => e.EventId == id)
+                .Select(e => new EventDetailsDTO()
+                {
+                    EventId = e.EventId,
+                    Name = e.Name,
+                    Description = e.Description,
+                    StartTime = e.StartTime,
+                    EndTime = e.EndTime,
+                    Location = e.Location,
+                    IsThirdParty = e.IsThirdParty,
+                    IsPublished = e.IsPublished,
+                    CreatedAt = e.CreatedAt,
+                    UpdatedAt = e.UpdatedAt
+                })
+                .FirstOrDefaultAsync();
         }
 
     }
