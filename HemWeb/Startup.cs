@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using HADU.hem.ApplicationCore.Data;
 using Microsoft.EntityFrameworkCore;
+using HADU.hem.ApplicationCore.Services;
 
 namespace HADU.hem.HemWeb
 {
@@ -47,6 +48,7 @@ namespace HADU.hem.HemWeb
             //     options.MinimumSameSitePolicy = SameSiteMode.None;
             // });
 
+            services.AddScoped<EventService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

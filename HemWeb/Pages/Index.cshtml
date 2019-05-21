@@ -5,5 +5,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">HADU Event management system</h1>
+    <ul>
+        @foreach (var evt in Model.events)
+        {
+            <li>@evt.Name</li>
+        }
+    </ul>
 </div>
