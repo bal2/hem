@@ -8,7 +8,8 @@ namespace HADU.hem.ApplicationCore.Entities
         public long PaymentId {get; set;}
         public long Amount { get; set; }
         public string PaymentReference { get; set; }
-        public DateTime CreationTime { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public DateTime ExpirationTime { get; set; }
         public DateTime PaymentTime { get; set; }
         public long UserId { get; set; }

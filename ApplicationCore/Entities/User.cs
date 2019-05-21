@@ -17,6 +17,8 @@ namespace HADU.hem.ApplicationCore.Entities
         public string City { get; set; }
         public string GuardianName { get; set; }
         public string GuardianPhone { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public List<Ticket> Tickets { get; set; }
         public List<Payment> Payments { get; set; }
     }

@@ -6,6 +6,10 @@ namespace HADU.hem.ApplicationCore.Entities
     {
         public long TicketId {get; set;}
         public long Price { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
+        public long TicketTypeId { get; set; }
+        public TicketType TicketType { get; set; }
         public long UserId { get; set; }
         public User User { get; set; }
         public long PaymentId { get; set; }

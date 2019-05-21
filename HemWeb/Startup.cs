@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using HADU.hem.ApplicationCore.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace HADU.hem.HemWeb
 {
@@ -20,6 +22,20 @@ namespace HADU.hem.HemWeb
         }
 
         public IConfiguration Configuration { get; }
+
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            ConfigureSqliteDatabase(services);
+
+            ConfigureServices(services);
+        }
+
+        public void ConfigureSqliteDatabase(IServiceCollection services)
+        {
+            services.AddDbContext<HemContext>(opt =>
+                opt.UseSqlite("Filename=./hem.sqlite")
+            );
+        }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -36,11 +52,12 @@ namespace HADU.hem.HemWeb
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, HemContext dbcontext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                dbcontext.Database.EnsureCreated();
             }
             else
             {

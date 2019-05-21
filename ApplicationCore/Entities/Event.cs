@@ -12,6 +12,9 @@ namespace HADU.hem.ApplicationCore.Entities
         public DateTime EndTime { get; set; }
         public string Location { get; set; }
         public bool IsThirdParty { get; set; }
+        public bool IsPublished { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
         public List<TicketType> TicketTypes { get; set; }
         public List<Seatmap> Seatmaps { get; set; }
     }

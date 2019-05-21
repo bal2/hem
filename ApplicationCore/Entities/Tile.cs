@@ -12,7 +12,6 @@ namespace HADU.hem.ApplicationCore.Entities
         public string Text { get; set; }
         public long SeatmapId { get; set; }
         public Seatmap Seatmap { get; set; }
-        public long TicketId { get; set; }
         public Ticket Ticket { get; set; }
     }
 
