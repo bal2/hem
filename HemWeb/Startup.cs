@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using HADU.hem.ApplicationCore.Data;
 using Microsoft.EntityFrameworkCore;
 using HADU.hem.ApplicationCore.Services;
+using HADU.hem.Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace HADU.hem.HemWeb
 {
@@ -49,6 +51,22 @@ namespace HADU.hem.HemWeb
             // });
 
             services.AddScoped<EventService>();
+            services.AddScoped<UserService>();
+            services.AddIdentity<ApplicationUser, ApplicationUserRole>()
+                .AddDefaultTokenProviders();
+            services.AddTransient<IUserStore<ApplicationUser>, UserStore>();
+            services.AddTransient<IRoleStore<ApplicationUserRole>, RoleStore>();
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+                //We might need to look into these requirements in the future
+            });
+            services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/LogIn");
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -70,6 +88,7 @@ namespace HADU.hem.HemWeb
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
             // app.UseCookiePolicy();
 
             app.UseMvc();

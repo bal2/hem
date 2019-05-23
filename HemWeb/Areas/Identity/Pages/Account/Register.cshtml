@@ -1,0 +1,117 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registrer ny bruker";
+}
+
+<h1 class="title">@ViewData["Title"]</h1>
+
+<section>
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <div asp-validation-summary="All" class="has-text-danger"></div>
+        <div class="field">
+            <label asp-for="Input.Email" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Email" class="input" />
+            </div>
+            <span asp-validation-for="Input.Email" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.Password" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Password" class="input" />
+            </div>
+            <span asp-validation-for="Input.Password" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.ConfirmPassword" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.ConfirmPassword" class="input" />
+            </div>
+            <span asp-validation-for="Input.ConfirmPassword" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.Nickname" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Nickname" class="input" />
+            </div>
+            <span asp-validation-for="Input.Nickname" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.FirstName" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.FirstName" class="input" />
+            </div>
+            <span asp-validation-for="Input.FirstName" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.LastName" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.LastName" class="input" />
+            </div>
+            <span asp-validation-for="Input.Email" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.BirthDate" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.BirthDate" class="input" />
+            </div>
+            <span asp-validation-for="Input.BirthDate" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.Phone" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Phone" class="input" />
+            </div>
+            <span asp-validation-for="Input.Phone" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.Address" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Address" class="input" />
+            </div>
+            <span asp-validation-for="Input.Address" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.Address2" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Address2" class="input" />
+            </div>
+            <span asp-validation-for="Input.Address2" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.Zip" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.Zip" class="input" />
+            </div>
+            <span asp-validation-for="Input.Zip" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.City" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.City" class="input" />
+            </div>
+            <span asp-validation-for="Input.City" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.GuardianName" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.GuardianName" class="input" />
+            </div>
+            <span class="help">Fylles ut dersom du er under 18</span>
+            <span asp-validation-for="Input.GuardianName" class="help is-danger"></span>
+        </div>
+        <div class="field">
+            <label asp-for="Input.GuardianPhone" class="label"></label>
+            <div class="control">
+                <input asp-for="Input.GuardianPhone" class="input" />
+            </div>
+            <span class="help">Fylles ut dersom du er under 18</span>
+            <span asp-validation-for="Input.GuardianPhone" class="help is-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</section>
+
+

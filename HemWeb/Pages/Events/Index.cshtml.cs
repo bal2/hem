@@ -1,11 +1,13 @@
 using System.Threading.Tasks;
 using HADU.hem.ApplicationCore.DTOs.Event;
 using HADU.hem.ApplicationCore.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HADU.hem.HemWeb.Pages.Events
 {
+    [Authorize]
     public class EventDetailsModel : PageModel
     {
 
