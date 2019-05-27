@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using HADU.hem.ApplicationCore.Data;
 using HADU.hem.ApplicationCore.DTOs.Event;
 using HADU.hem.ApplicationCore.Entities;
+using HADU.hem.ApplicationCore.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HADU.hem.ApplicationCore.Services
@@ -32,7 +33,7 @@ namespace HADU.hem.ApplicationCore.Services
 
         public async Task<EventDetailsDTO> GetEventAsync(long id)
         {
-            return await _dbContext
+            var evt = await _dbContext
                 .Events
                 .Where(e => e.EventId == id)
                 .Select(e => new EventDetailsDTO()
@@ -49,6 +50,11 @@ namespace HADU.hem.ApplicationCore.Services
                     UpdatedAt = e.UpdatedAt
                 })
                 .FirstOrDefaultAsync();
+
+            if (evt == null)
+                throw new EventNotFoundException();
+
+            return evt;
         }
 
     }
