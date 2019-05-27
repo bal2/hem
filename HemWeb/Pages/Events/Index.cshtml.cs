@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HADU.hem.HemWeb.Pages.Events
 {
-    [Authorize]
     public class EventDetailsModel : PageModel
     {
 

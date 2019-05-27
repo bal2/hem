@@ -71,7 +71,7 @@ namespace HADU.hem.ApplicationCore.Services
                 City = newUser.City,
                 GuardianName = newUser.GuardianName,
                 GuardianPhone = newUser.GuardianPhone,
-                AccessLevel = newUser.AccessLevel
+                AccessLevel = newUser.AccessLevel > 0 ? newUser.AccessLevel : AccessLevel.USER
             };
 
             await _dbContext.User.AddAsync(user);

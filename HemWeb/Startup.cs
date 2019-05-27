@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using HADU.hem.ApplicationCore.Services;
 using HADU.hem.Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
+using HADU.hem.Infrastructure.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HADU.hem.HemWeb
 {
@@ -66,7 +68,22 @@ namespace HADU.hem.HemWeb
                 options.Password.RequiredUniqueChars = 0;
                 //We might need to look into these requirements in the future
             });
-            services.ConfigureApplicationCookie(options => options.LoginPath = "/Identity/Account/LogIn");
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Identity/Account/LogIn";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+            });
+            services.AddScoped<IUserClaimsPrincipalFactory<ApplicationUser>, CustomUserClaimsPrincipalFactory>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("IsUser", policy =>
+                    policy.Requirements.Add(new AccessLevelRequirement(ApplicationCore.Entities.AccessLevel.USER)));
+                options.AddPolicy("IsEventAdmin", policy =>
+                    policy.Requirements.Add(new AccessLevelRequirement(ApplicationCore.Entities.AccessLevel.EVENTADMIN)));
+                options.AddPolicy("IsAdmin", policy =>
+                    policy.Requirements.Add(new AccessLevelRequirement(ApplicationCore.Entities.AccessLevel.ADMIN)));
+            });
+            services.AddSingleton<IAuthorizationHandler, AccessLevelHandler>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
