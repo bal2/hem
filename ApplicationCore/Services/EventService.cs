@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HADU.hem.ApplicationCore.Data;
-using HADU.hem.ApplicationCore.DTOs.Event;
+using HADU.hem.ApplicationCore.DTOs.Events;
 using HADU.hem.ApplicationCore.Entities;
 using HADU.hem.ApplicationCore.Exceptions;
 using Microsoft.EntityFrameworkCore;
@@ -57,5 +57,29 @@ namespace HADU.hem.ApplicationCore.Services
             return evt;
         }
 
+        public async Task<EventDetailsDTO> CreateEventAsync(EventCreateDTO inp) {
+            Event e = new Event() {
+                Name = inp.Name,
+                Description = inp.Description,
+                StartTime = inp.StartTime,
+                EndTime = inp.EndTime,
+                Location = inp.Location,
+                IsThirdParty = inp.IsThirdParty
+            };
+
+            await _dbContext.Events.AddAsync(e);
+            await _dbContext.SaveChangesAsync();
+
+            return new EventDetailsDTO(e);
+        }
+
+        internal async Task<Event> GetEventModelAsync(long id) {
+            var e = await _dbContext.Events.FindAsync(id);
+
+            if(e == null)
+                throw new EventNotFoundException();
+            
+            return e;
+        }
     }
 }

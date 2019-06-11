@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using HADU.hem.ApplicationCore.DTOs.Event;
+using HADU.hem.ApplicationCore.DTOs.Events;
 using HADU.hem.ApplicationCore.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

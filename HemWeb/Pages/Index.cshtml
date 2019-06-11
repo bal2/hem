@@ -6,6 +6,10 @@
 
 <div>
     <h1 class="title">HADU Event management system</h1>
+    @if ((await AuthorizationService.AuthorizeAsync(User, "IsEventAdmin")).Succeeded)
+    {
+        <a asp-page="./Events/New" class="button is-primary">Nytt arrangement</a>
+    }
     <ul>
         @foreach (var evt in Model.events)
         {
