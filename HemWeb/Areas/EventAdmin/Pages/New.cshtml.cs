@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HADU.hem.HemWeb.Pages.Events
+namespace HADU.hem.HemWeb.Areas.EventAdmin.Pages
 {
     [Authorize("IsEventAdmin")]
     public class EventCreateModel : PageModel

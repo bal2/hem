@@ -85,7 +85,11 @@ namespace HADU.hem.HemWeb
             });
             services.AddSingleton<IAuthorizationHandler, AccessLevelHandler>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddRazorPagesOptions(opt => {
+                    //opt.Conventions.AddPageRoute("/Areas/EventAdmin/Edit", "/EventAdmin/{id}/Edit");
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,10 +1,10 @@
 @page "{id:int?}"
-@model HADU.hem.HemWeb.Pages.Events.EventEditModel
+@model HADU.hem.HemWeb.Areas.EventAdmin.Pages.EventCreateModel
 @{
-    ViewData["Title"] = "Rediger arrangement";
+    ViewData["Title"] = "Nytt arrangement";
 }
 
-<h1 class="title">Rediger arrangement</h1>
+<h1>Opprett nytt arrangement</h1>
 
 <form method="post">
     <div asp-validation-summary="All" class="has-text-danger"></div>
@@ -18,7 +18,7 @@
     <div class="field">
         <label asp-for="Input.Description" class="label"></label>
         <div class="control">
-            <textarea asp-for="Input.Description"></textarea>
+            <input asp-for="Input.Description" class="input" />
         </div>
         <span asp-validation-for="Input.Description" class="help is-danger"></span>
     </div>
@@ -47,9 +47,5 @@
         <label asp-for="Input.IsThirdParty" class="label"></label>
         <input asp-for="Input.IsThirdParty" class="checkbox" />
     </div>
-    <div class="field">
-        <label asp-for="Input.IsPublished" class="label"></label>
-        <input asp-for="Input.IsPublished" class="checkbox" />
-    </div>
-    <button type="submit" class="button is-primary">Oppdater</button>
+    <button type="submit" class="btn btn-primary">Register</button>
 </form>

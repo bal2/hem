@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace HADU.hem.HemWeb.Pages.Events
+namespace HADU.hem.HemWeb.Areas.EventAdmin.Pages
 {
     [Authorize("IsEventAdmin")]
     public class EventEditModel : PageModel
@@ -98,7 +98,7 @@ namespace HADU.hem.HemWeb.Pages.Events
 
                 var e = await _eventService.UpdateEventAsync(id.Value, updateDTO);
 
-                return Redirect("/Events/" + e.EventId);
+                //return Redirect("/Events/" + e.EventId);
             }
 
             return Page();
