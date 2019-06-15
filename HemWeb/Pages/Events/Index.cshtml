@@ -4,4 +4,8 @@
     ViewData["Title"] = "Detaljer";
 }
 
-<h1>@Model.EventDetails.Name</h1>
+<h1 class="title">@Model.EventDetails.Name</h1>
+@if ((await AuthorizationService.AuthorizeAsync(User, "IsEventAdmin")).Succeeded)
+{
+    <a asp-page="/Events/Edit" asp-route-id="@Model.EventDetails.EventId" class="button">Rediger arrangement</a>
+}

@@ -57,8 +57,10 @@ namespace HADU.hem.ApplicationCore.Services
             return evt;
         }
 
-        public async Task<EventDetailsDTO> CreateEventAsync(EventCreateDTO inp) {
-            Event e = new Event() {
+        public async Task<EventDetailsDTO> CreateEventAsync(EventCreateDTO inp)
+        {
+            Event e = new Event()
+            {
                 Name = inp.Name,
                 Description = inp.Description,
                 StartTime = inp.StartTime,
@@ -73,12 +75,31 @@ namespace HADU.hem.ApplicationCore.Services
             return new EventDetailsDTO(e);
         }
 
-        internal async Task<Event> GetEventModelAsync(long id) {
+        public async Task<EventDetailsDTO> UpdateEventAsync(long id, EventUpdateDTO inp)
+        {
+            var e = await GetEventModelAsync(id);
+
+            e.Name = inp.Name;
+            e.Description = inp.Description;
+            e.StartTime = inp.StartTime;
+            e.EndTime = inp.EndTime;
+            e.Location = inp.Location;
+            e.IsThirdParty = inp.IsThirdParty;
+            e.IsPublished = inp.IsPublished;
+
+            _dbContext.Events.Update(e);
+            await _dbContext.SaveChangesAsync();
+
+            return new EventDetailsDTO(e);
+        }
+
+        internal async Task<Event> GetEventModelAsync(long id)
+        {
             var e = await _dbContext.Events.FindAsync(id);
 
-            if(e == null)
+            if (e == null)
                 throw new EventNotFoundException();
-            
+
             return e;
         }
     }

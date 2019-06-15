@@ -1,0 +1,55 @@
+@page "{id:int?}"
+@model HADU.hem.HemWeb.Pages.Events.EventEditModel
+@{
+    ViewData["Title"] = "Rediger arrangement";
+}
+
+<h1 class="title">Rediger arrangement</h1>
+
+<form method="post">
+    <div asp-validation-summary="All" class="has-text-danger"></div>
+    <div class="field">
+        <label asp-for="Input.Name" class="label"></label>
+        <div class="control">
+            <input asp-for="Input.Name" class="input" />
+        </div>
+        <span asp-validation-for="Input.Name" class="help is-danger"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Input.Description" class="label"></label>
+        <div class="control">
+            <textarea asp-for="Input.Description"></textarea>
+        </div>
+        <span asp-validation-for="Input.Description" class="help is-danger"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Input.StartTime" class="label"></label>
+        <div class="control">
+            <input asp-for="Input.StartTime" class="input" />
+        </div>
+        <span asp-validation-for="Input.StartTime" class="help is-danger"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Input.EndTime" class="label"></label>
+        <div class="control">
+            <input asp-for="Input.EndTime" class="input" />
+        </div>
+        <span asp-validation-for="Input.EndTime" class="help is-danger"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Input.Location" class="label"></label>
+        <div class="control">
+            <input asp-for="Input.Location" class="input" />
+        </div>
+        <span asp-validation-for="Input.Location" class="help is-danger"></span>
+    </div>
+    <div class="field">
+        <label asp-for="Input.IsThirdParty" class="label"></label>
+        <input asp-for="Input.IsThirdParty" class="checkbox" />
+    </div>
+    <div class="field">
+        <label asp-for="Input.IsPublished" class="label"></label>
+        <input asp-for="Input.IsPublished" class="checkbox" />
+    </div>
+    <button type="submit" class="button is-primary">Oppdater</button>
+</form>
